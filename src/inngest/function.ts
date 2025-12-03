@@ -11,7 +11,7 @@ const anthropic = createAnthropic();
 export const execute = inngest.createFunction(
   { id: "execute-ai" },
   { event: "execute/ai" },
-  async ({ event, step }) => {
+  async ({ step }) => {
     const { steps: geminiSteps } = await step.ai.wrap(
       "gemini-generate-text",
       generateText,
@@ -19,6 +19,11 @@ export const execute = inngest.createFunction(
         model: google("gemini-2.5-flash"),
         system: "You are a lodu intern",
         prompt: "What is 2+2?",
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       }
     );
 
@@ -29,6 +34,11 @@ export const execute = inngest.createFunction(
         model: openai("gpt-4"),
         system: "You are an asshole boss",
         prompt: "What is 2+2?",
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       }
     );
 
@@ -39,6 +49,11 @@ export const execute = inngest.createFunction(
         model: anthropic("claude-opus-4-0"),
         system: "You are an lodu intern",
         prompt: "What is 2+2?",
+        experimental_telemetry: {
+          isEnabled: true,
+          recordInputs: true,
+          recordOutputs: true,
+        },
       }
     );
     return {

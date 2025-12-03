@@ -4,6 +4,7 @@ import LogoutButton from "./logout";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import * as Sentry from "@sentry/nextjs";
 
 const Page = () => {
   const trpc = useTRPC();
@@ -12,6 +13,9 @@ const Page = () => {
     trpc.testAi.mutationOptions({
       onSuccess: () => {
         toast.success("Response is about to get generated");
+        Sentry.logger.info("User triggered test log", {
+          log_source: "sentry_test",
+        });
       },
     })
   );
