@@ -101,10 +101,10 @@ export const AppSideBar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            {!hasActiveSubscription && isLoading && (
+            {!hasActiveSubscription && !isLoading && (
               <SidebarMenuButton
                 tooltip="Upgrade to Pro"
-                onClick={() => authClient.checkout({ slug: "Nodebase" })}
+                onClick={() => authClient.checkout({ slug: "pro" })}
                 className="gap-x-4 h-10 px-4"
               >
                 <StarIcon className="h-4 w-4" />

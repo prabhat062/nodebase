@@ -20,8 +20,8 @@ export const auth = betterAuth({
         checkout({
           products: [
             {
-              productId: "58a19e9f-0a87-4dde-99dd-2df0e9dea8d3",
-              slug: "Nodebase",
+              productId: "d634f789-095d-48ef-b9c9-f3d129f4c23f",
+              slug: "pro",
             },
           ],
           successUrl: process.env.POLAR_SUCCESS_URL,
